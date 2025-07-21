@@ -1,0 +1,6 @@
+@FindersPeekers_HostAddress = http://localhost:5139
+
+GET {{FindersPeekers_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
