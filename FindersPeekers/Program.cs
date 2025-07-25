@@ -11,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<PointOfInterestContext>(option => option.UseInMemoryDatabase("PointOfInterestDb"));
+builder.Services.AddDbContext<CategoryContext>(option => option.UseInMemoryDatabase("CategoryDb"));
 
 var app = builder.Build();
 

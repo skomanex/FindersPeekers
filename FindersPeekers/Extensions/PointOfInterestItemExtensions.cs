@@ -1,17 +1,11 @@
 ﻿using FindersPeekers.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FindersPeekers.Extensions
 {
     public static class PointOfInterestItemExtensions
     {
-        private enum PointOfInterestCategory
-        {
-            Park,
-            Museum,
-            Restaurant,
-            HistoricSite,
-            Other
-        }
         public static PointOfInterestItemDTO ToDTO(this PointOfInterestItem item)
         {
             return new PointOfInterestItemDTO
@@ -21,16 +15,12 @@ namespace FindersPeekers.Extensions
                 Description = item.Description,
                 Latitude = item.Latitude,
                 Longitude = item.Longitude,
-                Category = ((PointOfInterestCategory)item.Category).ToString()
+                Category = ""
             };
         }
 
         public static PointOfInterestItem ToEntity(this PointOfInterestItemDTO dto)
         {
-            if (!Enum.TryParse<PointOfInterestCategory>(dto.Category, out var category))
-            {
-                category = PointOfInterestCategory.Other;
-            }
             return new PointOfInterestItem
             {
                 Id = dto.Id,
@@ -38,7 +28,7 @@ namespace FindersPeekers.Extensions
                 Description = dto.Description,
                 Latitude = dto.Latitude,
                 Longitude = dto.Longitude,
-                Category = (int)category
+                Category = 0
             };
         }
     }
